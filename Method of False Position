@@ -1,0 +1,36 @@
+"""
+function is a string 
+a is the selected lower boundary
+b is the selected upper boundary
+"""
+def fp_method(function, a, b, error_accept):
+  
+  def f(x):
+    f = eval(function)
+    return f
+
+#Initializing variables
+  i = 0                                       #iteration step
+  c_before = 0                                #Initial value of c
+  c = (a*f(b) - b*f(a)) /(f(b) - f(a))        #Calculated the secant line between f(a) an f(b)
+  error = abs(c - c_before)
+
+  while error > error_accept:
+    c_after = (a*f(b) - b*f(a)) /(f(b) - f(a)) 
+
+    if f(a)*f(b) >= 0 :                       #No root is present on the interval [a,b]
+      print("No root is present or multiple roots are present on the interval [a,b]")
+      quit()
+
+    elif f(c_after)*f(b) :
+      error = error = abs(c_after - a)
+      a = c_after
+      i = i + 1
+
+    else:
+      print("Something else went wrong")
+      quit()
+
+  print(f"The error remaining is {error} after {i} iterations")
+  print(f"The root can be approximately found at {c_after}")
+  print(f"The lowe root boundary, a is {a} and the upper root boundary is {b}")
