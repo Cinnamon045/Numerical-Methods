@@ -1,0 +1,44 @@
+def bisection_method(function, a, b, error_accept):
+
+  #Evaluating the inputted function in string form 
+  def f(x):
+    f = eval(function)
+    return f
+  
+  #Initilizing error
+  error = abs(b - a)
+
+  #loop for bisection method
+  while error > error_accept:
+
+    c = (a + b)/2
+
+
+  #Case I    : f(a) and f(b) are both positive; bisection algorithm yields inconclusive result
+  #Case II   : f(a) and f(b) are both negative; bisection algorithm yields inconclusive result
+  #Case III  : f(a) = 0 and f(b) can be either negative or positive; bisection algorithm yields inconclusive result
+  #Case IV   : f(a) can be either positive or negative and f(b) = 0; bisection algorithm yields inconclusive result
+  #In all cases f(a)*f(b) >= 0
+
+    if f(a) * f(b) >= 0:
+      print("Bisection algorithm yields inconclusive result. Try another pair of lower and upper bound values")     
+      quit()
+
+  #if f(c) and f(a) have opposite signs
+
+    elif f(c) * f(a) < 0:
+      b = c                 #replace b by c
+      error = abs(b - a)
+
+  #if f(c) and f(a) have opposite signs
+
+    elif f(c) * f(b) < 0:
+      a = c                 #replace a by c
+      error = abs(b - a)
+
+    else:
+      print("Something went wrong")
+      quit()
+
+  print(f"The error is {error}")
+  print(f"the lower boundary a is {a}, and the upper boundary b is {b}. The root is therefore {(a+b)/2}")
